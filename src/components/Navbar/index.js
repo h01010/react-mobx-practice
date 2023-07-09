@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  AppBar,
   Avatar,
   Box,
   Toolbar,
@@ -14,6 +13,7 @@ import {
   MenuItem
 } from '@mui/material';
 import userIcon from '../../assets/user_icon.png';
+import { StyledAppbar } from './style';
 
 const pages = ['Main', 'Profile'];
 const url = ['/', '/profile'];
@@ -31,42 +31,30 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="fixed" sx={{ background: '#61dafb' }}>
+    <StyledAppbar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
+            className="logo_text"
             variant="h6"
             noWrap
             component="a"
             href="/"
-            sx={{
-              mr: 2,
-              display: 'flex',
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#282c34',
-              textDecoration: 'none'
-            }}
           >
             Techeer
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: 'flex' }}>
+          <Box className="menu_box">
             {pages.map((page, idx) => (
-              <Button
-                key={page}
-                onClick={() => navigate(url[idx])}
-                sx={{ my: 2, color: '#282c34', display: 'block' }}
-              >
+              <Button key={page} onClick={() => navigate(url[idx])}>
                 {page}
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Box className="user_box">
+            <Tooltip title="User info">
+              <IconButton onClick={handleOpenUserMenu}>
                 <Avatar alt="Remy Sharp" src={userIcon} />
               </IconButton>
             </Tooltip>
@@ -93,7 +81,7 @@ const Navbar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </StyledAppbar>
   );
 };
 export default Navbar;

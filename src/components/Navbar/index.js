@@ -9,24 +9,24 @@ import {
   Container,
   Button,
   IconButton,
-  Menu,
-  MenuItem
+  Popover
 } from '@mui/material';
 import userIcon from '../../assets/user_icon.png';
 import { StyledAppbar } from './style';
 
 const pages = ['Main', 'Profile'];
 const url = ['/', '/profile'];
+const userName = 'Yeonju Seo';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenUserMenu = (event) => {
+  const handleOpenUserInfoBox = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserInfoBox = () => {
     setAnchorElUser(null);
   };
 
@@ -54,30 +54,21 @@ const Navbar = () => {
 
           <Box className="user_box">
             <Tooltip title="User info">
-              <IconButton onClick={handleOpenUserMenu}>
+              <IconButton onClick={handleOpenUserInfoBox}>
                 <Avatar alt="Remy Sharp" src={userIcon} />
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
+            <Popover
               anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseUserInfoBox}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left'
+              }}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">test menu</Typography>
-              </MenuItem>
-            </Menu>
+              <Typography sx={{ p: 2 }}>{userName}</Typography>
+            </Popover>
           </Box>
         </Toolbar>
       </Container>

@@ -6,8 +6,7 @@ import {
   Button,
   CardContent,
   CardActions,
-  Typography,
-  Container
+  Typography
 } from '@mui/material';
 import { MainPageContainer } from './style.js';
 

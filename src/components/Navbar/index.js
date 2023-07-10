@@ -16,9 +16,8 @@ import { StyledAppbar } from './style';
 
 const pages = ['Main', 'Profile'];
 const url = ['/', '/profile'];
-const userName = 'Yeonju Seo';
 
-const Navbar = () => {
+const Navbar = ({ name }) => {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -67,7 +66,7 @@ const Navbar = () => {
                 horizontal: 'left'
               }}
             >
-              <Typography sx={{ p: 2 }}>{userName}</Typography>
+              <Typography sx={{ p: 2 }}>{name}</Typography>
             </Popover>
           </Box>
         </Toolbar>

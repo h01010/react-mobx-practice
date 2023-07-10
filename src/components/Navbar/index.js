@@ -13,14 +13,17 @@ import {
 } from '@mui/material';
 import userIcon from '../../assets/user_icon.png';
 import { StyledAppbar } from './style';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../mobx-store';
 
 const pages = ['Main', 'Profile'];
 const url = ['/', '/profile'];
-const userName = 'Yeonju Seo';
 
-const Navbar = () => {
+const Navbar = observer(() => {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { userStore } = useStore();
+  const { name } = userStore;
 
   const handleOpenUserInfoBox = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -67,12 +70,12 @@ const Navbar = () => {
                 horizontal: 'left'
               }}
             >
-              <Typography sx={{ p: 2 }}>{userName}</Typography>
+              <Typography sx={{ p: 2 }}>{name}</Typography>
             </Popover>
           </Box>
         </Toolbar>
       </Container>
     </StyledAppbar>
   );
-};
+});
 export default Navbar;

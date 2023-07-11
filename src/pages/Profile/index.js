@@ -1,9 +1,7 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { ProfilePageContainer } from './style.js';
 
-const userName = 'Yeonju Seo';
-
-const Profile = () => {
+const Profile = ({ name }) => {
   return (
     <ProfilePageContainer>
       <Typography className="page_title" variant="h3" gutterBottom>
@@ -15,7 +13,7 @@ const Profile = () => {
             User Name:
           </Typography>
           <Typography variant="h6" gutterBottom>
-            {userName}
+            {name}
           </Typography>
         </CardContent>
       </Card>
